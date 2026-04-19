@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Inter", serif; /* Modern sleek theme prefers sans overall */
+  
+  --color-brand-primary: #2563eb;
+  --color-brand-bg: #f8fafc;
+  --color-brand-border: #e2e8f0;
+  --color-brand-text: #1e293b;
+  --color-brand-muted: #64748b;
+  --color-brand-accent: #eff6ff;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased;
+  }
+}
+
+.markdown-body {
+  @apply prose prose-neutral max-w-none;
+}

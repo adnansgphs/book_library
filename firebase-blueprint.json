@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "Book": {
+      "title": "Book",
+      "description": "A book entry in the library.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The title of the book" },
+        "author": { "type": "string", "description": "The author of the book" },
+        "isbn": { "type": "string", "description": "The ISBN of the book" },
+        "coverUrl": { "type": "string", "description": "URL to the cover image" },
+        "publisher": { "type": "string", "description": "The publisher of the book" },
+        "categories": { "type": "array", "description": "List of categories" },
+        "pdfUrl": { "type": "string", "description": "Embedded Google Drive link for PDF" },
+        "directLink": { "type": "string", "description": "Direct link to the book resource" },
+        "description": { "type": "string", "description": "Book summary/description" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "description": "User ID of the admin who added it" }
+      },
+      "required": ["name"]
+    },
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "A blog article.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "content"]
+    },
+    "UserMetadata": {
+      "title": "User Metadata",
+      "description": "Private user information and roles.",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/books/{bookId}": {
+      "schema": "Book",
+      "description": "Public library catalog"
+    },
+    "/blogPosts/{postId}": {
+      "schema": "BlogPost",
+      "description": "Public blog content"
+    },
+    "/users/{userId}": {
+      "schema": "UserMetadata",
+      "description": "User profile and permissions"
+    }
+  }
+}
